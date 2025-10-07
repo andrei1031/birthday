@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready for a Surprise?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main: #800000;      /* Maroon */
+            --accent: #b22234;    /* Red */
+            --black: #18181b;
+            --white: #fff;
+            --gray: #f3f3f3;
+            --shadow: 0 8px 32px rgba(128,0,0,0.10);
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gray) 0%, var(--white) 100%);
+            font-family: 'Cinzel', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden; /* Hide overflow for falling elements */
+            position: relative; /* Needed for positioning background elements */
+        }
+        .container {
+            background: var(--white);
+            border-radius: 2rem;
+            box-shadow: var(--shadow);
+            padding: 2.5rem 1.5rem;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            border: 2px solid var(--main);
+            position: relative; /* Ensure container is above background elements */
+            z-index: 10; /* Keep content above background elements */
+        }
+        .magic-btn {
+            background: var(--main);
+            color: var(--white);
+            font-size: 1.5rem;
+            padding: 1rem 2.5rem;
+            border-radius: 999px;
+            border: none;
+            margin-top: 2rem;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(128,0,0,0.10);
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        .magic-btn:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+        .msg {
+            min-height: 3rem;
+            font-size: 1.3rem;
+            color: var(--main);
+            margin-top: 1.5rem;
+            transition: opacity 0.3s;
+            font-family: 'Cinzel', serif;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--main);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        /* Styles for individual background elements (flowers and emojis) */
+        .background-element {
+            position: absolute;
+            font-size: 2em; /* Larger elements in the background */
+            pointer-events: none; /* Allows clicks to pass through */
+            opacity: 0.7; /* Slightly transparent */
+            animation: fall linear infinite; /* Apply the falling animation */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* A subtle glow */
+            z-index: 1; /* Behind the container */
+        }
+
+        /* Define the falling animation */
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 1.2rem 0.5rem;
+                border-radius: 1rem;
+            }
+            .magic-btn {
+                font-size: 1.1rem;
+                padding: 0.7rem 1.2rem;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+            .msg {
+                font-size: 1rem;
+            }
+            .background-element {
+                font-size: 1.5em; /* Adjust element size for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To my dearest Kendra! 💖</h1>
+        <div id="message" class="msg">Every day with you is a new adventure, a new reason to smile, and a new memory to cherish.<br>Thankyou for being my best friend, my love, and my everything.<br>Happy 21st Birthday my love!<br>-Andreiiii</div>
+        <button id="magicBtn" class="magic-btn">Back to Memories</button>
+    </div>
+
+    <div id="backgroundElements"></div>
+
+    <script>
+        const btn = document.getElementById('magicBtn');
+        const backgroundElementsContainer = document.getElementById('backgroundElements');
+
+        const flowerEmoji = '🌸';
+        const heartEyesEmoji = '😍';
+        
+        const totalBackgroundElements = 48; // Total number of animated elements (emojis + flowers)
+
+        // Function to create and animate a single background element
+        function createBackgroundElement(content) {
+            const element = document.createElement('span');
+            element.classList.add('background-element');
+            element.textContent = content; // Can be '🌸' or '😍'
+            
+            // Randomize starting position (left), size, duration, and delay
+            element.style.left = `${Math.random() * 100}vw`;
+            element.style.animationDuration = `${Math.random() * 5 + 5}s`; // 5 to 10 seconds
+            element.style.animationDelay = `${Math.random() * 5}s`; // Up to 5 seconds delay
+            element.style.fontSize = `${Math.random() * 1.5 + 1}em`; // 1em to 2.5em
+
+            backgroundElementsContainer.appendChild(element);
+
+            // Remove element after it falls off screen to prevent DOM clutter
+            // And create a new one to maintain a continuous flow
+            element.addEventListener('animationiteration', () => {
+                element.remove();
+                createBackgroundElement(Math.random() < 0.5 ? flowerEmoji : heartEyesEmoji); // Randomly choose next element
+            });
+        }
+
+        // Initialize background elements
+        for (let i = 0; i < totalBackgroundElements; i++) {
+            // Distribute flowers and heart eyes emojis
+            createBackgroundElement(Math.random() < 0.5 ? flowerEmoji : heartEyesEmoji);
+        }
+
+        btn.addEventListener('click', () => {
+            window.location.href = "home.html";
+        });
+    </script>
+</body>
+</html>

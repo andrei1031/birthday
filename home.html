@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 21st Birthday Baby/Babe/Bansot/Dragon! 🥂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cinzel:wght@400..900&family=Delius+Unicase:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --main: #800000;      /* Maroon */
+            --accent: #b22234;    /* Red */
+            --black: #18181b;
+            --white: #fff;
+            --gray: #f3f3f3;
+            --shadow: 0 8px 32px rgba(128,0,0,0.10);
+        }
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(120deg, var(--gray) 0%, var(--white) 100%);
+            min-height: 100vh;
+            margin: 0;
+            color: var(--black);
+        }
+        .nav {
+            width: 100%;
+            background: var(--main);
+            box-shadow: 0 2px 12px rgba(128,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .nav-inner {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 2rem;
+        }
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            color: var(--white);
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 0.3rem 1rem;
+            border-radius: 999px;
+            transition: background 0.2s, color 0.2s;
+            font-weight: 500;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--accent);
+            color: var(--white);
+        }
+        .container-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        /* --- HERO --- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            border-radius: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            padding: 3rem 2rem 2rem 2rem;
+            gap: 2rem;
+            border: 2px solid var(--main);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .hero-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.7rem;
+            font-weight: 400; /* Use normal weight for a more elegant look */
+            color: var(--main);
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-shadow: 0 2px 16px var(--accent), 0 1px 2px var(--black);
+            text-align: center;
+        }
+        .hero-desc {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--main);
+            background: #f9f9f9;
+            border-radius: 1.5rem;
+            padding: 1.2rem 2rem;
+            box-shadow: 0 2px 12px rgba(128,0,0,0.08);
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            text-align: center;
+            border: 1.5px solid var(--accent);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-img-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .hero-img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 2rem;
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            background: #fff;
+        }
+        /* --- SECTIONS --- */
+        .section {
+            background: var(--white);
+            border-radius: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            padding: 2.5rem 2rem 2rem 2rem;
+            border: 1.5px solid var(--main);
+        }
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--main);
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .gallery-card {
+            background: #f9f9f9;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: 2px solid var(--main);
+        }
+        .gallery-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 8px 32px var(--main);
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(0deg, var(--main) 80%, rgba(128,0,0,0.1) 100%);
+            color: var(--white);
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            padding: 1rem 1rem 0.7rem 1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-card:hover .gallery-caption {
+            opacity: 1;
+        }
+        .cards-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .reveal-card {
+            background: #f9f9f9;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow);
+            width: 270px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            padding: 1.5rem 1rem;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--main);
+        }
+        .reveal-card:hover {
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 8px 32px var(--accent);
+            background: var(--accent);
+            color: var(--white);
+        }
+        .reveal-card.flipped {
+            background: var(--main);
+            color: var(--white);
+            border: 2px solid var(--accent);
+        }
+        .reveal-card .front,
+        .reveal-card .back {
+            transition: opacity 0.3s;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+        .reveal-card .back {
+            opacity: 0;
+            z-index: 2;
+        }
+        .reveal-card.flipped .front {
+            opacity: 0;
+        }
+        .reveal-card.flipped .back {
+            opacity: 1;
+        }
+        .adventure-block {
+            background: #f9f9f9;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow);
+            padding: 2rem 1rem;
+            margin: 2rem 0 2rem 0;
+            text-align: center;
+            border: 2px solid var(--main);
+        }
+        .modern-btn {
+            background: var(--main);
+            color: var(--white);
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 999px;
+            padding: 0.9rem 2.5rem;
+            margin: 1.5rem 0 0 0;
+            cursor: pointer;
+            box-shadow: 0 2px 8px var(--main);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .modern-btn:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+        .countdown-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .countdown-item {
+            background: var(--main);
+            color: var(--white);
+            border-radius: 1rem;
+            padding: 1.2rem 1.5rem;
+            min-width: 80px;
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: 0 2px 12px rgba(128,0,0,0.08);
+            margin: 0 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .countdown-label {
+            font-size: 1rem;
+            font-family: 'Cinzel', serif;
+            color: var(--white);
+            margin-top: 0.3rem;
+            font-weight: 400;
+        }
+        .footer {
+            background: var(--main);
+            color: var(--white);
+            border-radius: 0;
+            text-align: center;
+            padding: 2.5rem 1rem 2rem 1rem;
+            margin-top: 3rem;
+            font-family: 'Cinzel', serif;
+            box-shadow: 0 -2px 24px var(--main);
+        }
+        .footer-highlight {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+        #hearts-container {
+            pointer-events: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 999;
+        }
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .container-main { padding: 0 0.5rem; }
+            .hero { padding: 2rem 1rem 1.5rem 1rem; gap: 1.5rem; }
+            .hero-img { max-width: 340px; }
+            .nav-inner { padding: 0.7rem 1rem; }
+        }
+        @media (max-width: 700px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .cards-row { flex-direction: column; gap: 1rem; }
+            .hero-title { font-size: 2rem; }
+            .section { padding: 1.5rem 0.5rem 1rem 0.5rem; }
+            .nav-links { gap: 0.7rem; }
+            .countdown-block { gap: 0.7rem; }
+            .countdown-item { font-size: 1.3rem; padding: 0.7rem 0.7rem; min-width: 60px; }
+            .hero-desc { font-size: 1.1rem; padding: 1rem 0.5rem; }
+        }
+        @media (max-width: 500px) {
+            .section, .hero, .footer { border-radius: 1rem; }
+            .hero-title { font-size: 1.1rem; }
+            .section-title { font-size: 1.1rem; }
+            .modern-btn { font-size: 1rem; padding: 0.7rem 1.2rem; }
+            .hero-img { max-width: 98vw; }
+            .nav-inner { flex-direction: column; gap: 0.5rem; }
+            .hero-desc { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Panel -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="nav-logo">Kendra's 21st</div>
+            <div class="nav-links">
+                <a href="#memories" class="active">Memories</a>
+                <a href="#notes">Notes</a>
+                <a href="#adventure">Adventure</a>
+                <a href="#reasons">Reasons</a>
+                <a href="#countdown">Countdown</a>
+                <a href="#music">Music</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-main">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Happy 21st Birthday, Kendra "Kendyyyy" Dana Sotelo! 🥂</h1>
+                <p class="hero-desc">
+                    Welcome to our story. Every moment with you is the greatest gift.<br>
+                    Today, let's look back on the memories we've made and look forward to the adventures that await!
+                </p>
+            </div>
+            <div class="hero-img-wrap">
+                <img src="https://placehold.co/420x420/F0F0F0/D946EF?text=Our+Favorite+Memory" alt="A romantic header photo of the couple" class="hero-img">
+            </div>
+        </section>
+
+        <section class="section" id="memories">
+            <div class="section-title">Our Memories</div>
+            <div class="gallery-grid">
+                <div class="gallery-card" onclick="openModal('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80', 'Chapter 1: The moment everything changed.')">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80" alt="The Day We Met">
+                    <div class="gallery-caption">Chapter 1: The moment everything changed.</div>
+                </div>
+                <div class="gallery-card" onclick="openModal('https://placehold.co/600x400/D8BFD8/4B0082?text=Our+First+Adventure', 'Remember that crazy road trip? Best mistake ever.')">
+                    <img src="https://placehold.co/600x400/D8BFD8/4B0082?text=Our+First+Adventure" alt="Our First Adventure">
+                    <div class="gallery-caption">Remember that crazy road trip? Best mistake ever.</div>
+                </div>
+                <div class="gallery-card" onclick="openModal('https://placehold.co/400x600/B0E0E6/000080?text=Your+Smile', 'My favorite view in the entire world.')">
+                    <img src="https://placehold.co/400x600/B0E0E6/000080?text=Your+Smile" alt="Your Smile">
+                    <div class="gallery-caption">My favorite view in the entire world.</div>
+                </div>
+                <div class="gallery-card" onclick="openModal('https://placehold.co/600x400/FF6347/FFFFFF?text=Date+Night', 'Pizza, movies, and you. Perfect.')">
+                    <img src="https://placehold.co/600x400/FF6347/FFFFFF?text=Date+Night" alt="Date Night">
+                    <div class="gallery-caption">Pizza, movies, and you. Perfect.</div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div id="image-modal" class="modal fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4" onclick="closeModal()" style="display:none;">
+                <div class="max-w-2xl w-full bg-white rounded-xl shadow-2xl overflow-hidden" onclick="event.stopPropagation()">
+                    <img id="modal-image" src="" alt="Enlarged Photo" class="w-full h-auto object-contain rounded-t-xl max-h-[70vh]">
+                    <div class="p-4 text-center">
+                        <p id="modal-caption" class="text-lg font-medium text-rose"></p>
+                        <button class="mt-3 text-sm text-gray-500 hover:text-rose transition duration-200" onclick="closeModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="notes">
+            <div class="section-title">Reveal a Secret Note 💌</div>
+            <div class="cards-row">
+                <div id="card-1" class="reveal-card" onclick="flipCard('card-1')">
+                    <div class="front" style="display:flex;flex-direction:column;align-items:center;">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=120&q=80" alt="Smile" style="width:70px;height:70px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #c54b74a0;margin-bottom:1rem;">
+                        <strong>Why I Love Your Smile ✨</strong>
+                        <div style="margin-top:1rem;">Click to Reveal a Secret Note</div>
+                    </div>
+                    <div class="back" style="display:flex;flex-direction:column;align-items:center;">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=120&q=80" alt="Smile" style="width:70px;height:70px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #fffbe7a0;margin-bottom:1rem;">
+                        <strong>Why I Love Your Smile</strong>
+                        <div style="margin-top:1rem;">"It lights up my whole day and makes me forget every stressful thing."</div>
+                    </div>
+                </div>
+                <div id="card-2" class="reveal-card" onclick="flipCard('card-2')">
+                    <div class="front" style="display:flex;flex-direction:column;align-items:center;">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=facearea&w=120&q=80" alt="Promise" style="width:70px;height:70px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #c54b74a0;margin-bottom:1rem;">
+                        <strong>A Promise for the Future 💍</strong>
+                        <div style="margin-top:1rem;">Click to Reveal a Secret Note</div>
+                    </div>
+                    <div class="back" style="display:flex;flex-direction:column;align-items:center;">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=facearea&w=120&q=80" alt="Promise" style="width:70px;height:70px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #fffbe7a0;margin-bottom:1rem;">
+                        <strong>A Promise for the Future</strong>
+                        <div style="margin-top:1rem;">"I promise to always bring you coffee in bed and be your biggest fan."</div>
+                    </div>
+                </div>
+                <div id="card-3" class="reveal-card" onclick="flipCard('card-3')">
+                    <div class="front" style="display:flex;flex-direction:column;align-items:center;">
+                        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=facearea&w=120&q=80" alt="Best Part" style="width:70px;height:70px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #c54b74a0;margin-bottom:1rem;">
+                        <strong>The Best Part of Us ❤️</strong>
+                        <div style="margin-top:1rem;">Click to Reveal a Secret Note</div>
+                    </div>
+                    <div class="back" style="display:flex;flex-direction:column;align-items:center;">
+                        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=facearea&w=120&q=80" alt="Best Part" style="width:70px;height:70px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #fffbe7a0;margin-bottom:1rem;">
+                        <strong>The Best Part of Us</strong>
+                        <div style="margin-top:1rem;">"Our ability to laugh at the silliest things is my favorite quality of our relationship."</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="adventure">
+            <div class="section-title">Our Next Adventure? 🗺️</div>
+            <div class="adventure-block">
+                <button id="date-generator-btn" class="modern-btn">What's Our Next Adventure?</button>
+                <div id="date-idea-box" class="mt-6 text-xl font-semibold" style="min-height:2.5rem;color:#b22234;"></div>
+            </div>
+        </section>
+        <script>
+        const dateIdeas = [
+            "Day trip to Manila for food and museums! 🏙️🍜",
+            "Chill at Burnham Park and try all the street food. 🌳🍢",
+            "Coffee date at a new Baguio café. ☕️🌲",
+            "Picnic at Camp John Hay with homemade sandwiches. 🧺🥪",
+            "Sunset walk at Mines View Park. 🌄",
+            "Explore Session Road and hunt for the best dessert. 🍰",
+            "Go to Elyu (again!) for beach and surf. 🏄‍♂️🌊",
+            "Visit Boracay someday for white sand and sunsets. 🏝️",
+            "Movie marathon at home with snacks. 🎬🍿",
+            "Ukay-ukay shopping spree in Baguio. 🛍️",
+            "Try a new hobby together, like painting or biking. 🎨🚲"
+        ];
+        document.getElementById('date-generator-btn').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * dateIdeas.length);
+            document.getElementById('date-idea-box').textContent = dateIdeas[randomIndex];
+        });
+        </script>
+
+        <section class="section" id="reasons">
+            <div class="section-title">101 Reasons Why I Love You</div>
+            <div class="text-center">
+                <button onclick="showReason()" class="modern-btn">Reveal a Reason</button>
+                <div id="reason-box" class="mt-6 text-xl font-semibold" style="font-family:'Bad Script',cursive;color:#b22234;"></div>
+            </div>
+        </section>
+
+        <section class="section" id="countdown">
+            <div class="section-title">Countdown to Our Anniversary</div>
+            <div class="countdown-block" id="countdown-block">
+                <!-- Countdown items will be injected here -->
+            </div>
+        </section>
+
+        <section class="section" id="music">
+            <div class="my-10 flex justify-center">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0u6tOw7Uc117gt9TukcD90?utm_source=generator" width="320" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+            </div>
+            <div class="text-center my-10">
+                <a href="love-letter.html"
+                class="modern-btn"
+                style="background:#b22234;color:#fff;">
+                💌 Open Your Secret Love Letter
+                </a>
+            </div>
+        </section>
+    </div>
+    <footer class="footer">
+        <div>I love you more than words can say.</div>
+        <div class="footer-highlight">Copyright © 2025-2026 Andrei Saldivar. All Rights Reserved.😉</div>
+    </footer>
+
+    <!-- Animated Floating Hearts -->
+    <div id="hearts-container"></div>
+    <script>
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.style.position = 'absolute';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (Math.random() * 24 + 24) + 'px';
+        heart.style.top = '100vh';
+        heart.style.opacity = 0.7 + Math.random() * 0.3;
+        heart.style.transition = 'transform 4s linear, opacity 4s linear';
+        document.getElementById('hearts-container').appendChild(heart);
+
+        setTimeout(() => {
+            heart.style.transform = `translateY(-110vh) scale(${Math.random() + 0.5})`;
+            heart.style.opacity = 0;
+        }, 100);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+    setInterval(createHeart, 800);
+    </script>
+
+    <script>
+    // Modal
+    function openModal(src, caption) {
+        document.getElementById('modal-image').src = src;
+        document.getElementById('modal-caption').textContent = caption;
+        document.getElementById('image-modal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        document.getElementById('image-modal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Reveal Card
+    function flipCard(cardId) {
+        document.getElementById(cardId).classList.toggle('flipped');
+    }
+
+    // 101 Reasons
+    const reasons = [
+        "Your laughter, which is often the best sound in the world.",
+        "The way your eyes light up when you talk about something you're passionate about.",
+        "Your strength and resilience in the face of challenges.",
+        "Your kindness, even to strangers.",
+        "The unique way you see the world.",
+        "Your intelligence and quick wit.",
+        "The comfort of your embrace.",
+        "Your passion for your hobbies.",
+        "The way you sing in the car (even if you're off-key).",
+        "Your ability to make the mundane feel special.",
+        "Your patience when I'm being difficult.",
+        "The scent of your favorite perfume or shampoo.",
+        "Your honesty, even when it's hard to hear.",
+        "Your dedication to your friends and family.",
+        "The soft spot you have for animals.",
+        "Your adventurous spirit.",
+        "Your creativity in any form.",
+        "The quiet moments we share in the morning.",
+        "Your confidence and self-assurance.",
+        "The little imperfections that make you unique.",
+        "The warmth of your hand in mine.",
+        "Your determination to achieve your goals.",
+        "The way you support my dreams.",
+        "Your sense of humor and ability to make me laugh.",
+        "The deep, thoughtful questions you ask.",
+        "Your ability to forgive.",
+        "The energy you bring to a room.",
+        "Your effortless elegance.",
+        "The way you remember small details about me.",
+        "Your vulnerability when you let your guard down.",
+        "Your dedication to learning and growing.",
+        "The sound of your voice on the phone.",
+        "Your ability to calm me down when I'm stressed.",
+        "The pride I feel just being by your side.",
+        "Your commitment to justice and fairness.",
+        "The way you dance, even when no one is watching.",
+        "Your appreciation for simple pleasures.",
+        "The comfort of your presence.",
+        "Your independence.",
+        "The way you handle criticism with grace.",
+        "Your passion for reading a good book.",
+        "The depth of your empathy.",
+        "Your inner fire.",
+        "The quiet trust we share.",
+        "Your ability to turn a bad day around.",
+        "Your sweet smile.",
+        "The way you challenge me to be a better person.",
+        "Your beautiful, unique perspective on life.",
+        "Your commitment to self-care.",
+        "The fun we have together.",
+        "Your taste in music.",
+        "The way you can multitask with ease.",
+        "Your natural beauty, even first thing in the morning.",
+        "Your loyalty.",
+        "The stories you tell.",
+        "Your curiosity about the world.",
+        "The way you fiercely protect those you love.",
+        "Your optimism.",
+        "The comforting rituals we've created together.",
+        "Your ability to express your emotions openly.",
+        "Your love for a perfectly brewed cup of coffee/tea.",
+        "The times you surprise me.",
+        "Your quiet moments of contemplation.",
+        "The sound of your sigh when you're finally relaxing.",
+        "Your refusal to give up.",
+        "The way you make a house feel like a home.",
+        "Your genuine enthusiasm for my success.",
+        "The little notes you leave me.",
+        "Your appreciation for nature.",
+        "Your unique fashion sense.",
+        "The knowledge that you trust me.",
+        "Your practical wisdom.",
+        "The way you deal with setbacks.",
+        "Your ability to nurture others.",
+        "The look you give me that says everything without words.",
+        "Your playful teasing.",
+        "The incredible depth of your soul.",
+        "Your quiet strength when you're tired but keep going.",
+        "The sparkle in your eyes when you're excited.",
+        "Your ability to make healthy choices.",
+        "Your infectious energy.",
+        "The way you can be serious and silly in the same hour.",
+        "Your dreams for the future.",
+        "The thoughtful gifts you give.",
+        "Your appreciation for a good meal.",
+        "The way you apologize when you're wrong.",
+        "Your deep, meaningful connections with friends.",
+        "Your courage to be vulnerable.",
+        "The lessons you've taught me.",
+        "Your sense of direction (or lack thereof, which is endearing).",
+        "The way you can completely lose yourself in a movie.",
+        "Your generosity.",
+        "The memories we've built together.",
+        "Your quiet intensity when focusing.",
+        "The peace I feel when I'm with you.",
+        "Your complete and unconditional love.",
+        "The sheer *magic* of your existence.",
+        "Knowing that my love is returned."
+    ]   ;
+    function showReason() {
+        const box = document.getElementById('reason-box');
+        const idx = Math.floor(Math.random() * reasons.length);
+        box.textContent = reasons[idx];
+    }
+
+    // Modern Countdown
+    const anniversary = new Date('2026-08-08T19:43:40');
+    function updateCountdown() {
+        const now = new Date();
+        const diff = anniversary - now;
+        const block = document.getElementById('countdown-block');
+        if (diff <= 0) {
+            block.innerHTML = `<div class="countdown-item" style="background:#b22234;">Happy Anniversary!</div>`;
+            return;
+        }
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff/(1000*60*60))%24);
+        const mins = Math.floor((diff/(1000*60))%60);
+        const secs = Math.floor((diff/1000)%60);
+        block.innerHTML = `
+            <div class="countdown-item">${days}<span class="countdown-label">Days</span></div>
+            <div class="countdown-item">${hours}<span class="countdown-label">Hours</span></div>
+            <div class="countdown-item">${mins}<span class="countdown-label">Minutes</span></div>
+            <div class="countdown-item">${secs}<span class="countdown-label">Seconds</span></div>
+        `;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+    </script>
+</body>
+</html>

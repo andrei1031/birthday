@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready for a Surprise?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main: #800000;      /* Maroon */
+            --accent: #b22234;    /* Red */
+            --black: #18181b;
+            --white: #fff;
+            --gray: #f3f3f3;
+            --shadow: 0 8px 32px rgba(128,0,0,0.10);
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gray) 0%, var(--white) 100%);
+            font-family: 'Cinzel', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden; /* Hide overflow for falling flowers */
+            position: relative; /* Needed for positioning background flowers */
+        }
+        .container {
+            background: var(--white);
+            border-radius: 2rem;
+            box-shadow: var(--shadow);
+            padding: 2.5rem 1.5rem;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            border: 2px solid var(--main);
+            position: relative; /* Ensure container is above flowers */
+            z-index: 10; /* Keep content above background flowers */
+        }
+        .magic-btn {
+            background: var(--main);
+            color: var(--white);
+            font-size: 1.5rem;
+            padding: 1rem 2.5rem;
+            border-radius: 999px;
+            border: none;
+            margin-top: 2rem;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(128,0,0,0.10);
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        .magic-btn:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+        .msg {
+            min-height: 3rem;
+            font-size: 1.3rem;
+            color: var(--main);
+            margin-top: 1.5rem;
+            transition: opacity 0.3s;
+            font-family: 'Cinzel', serif;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--main);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .click-counter {
+            font-size: 1rem;
+            color: var(--black);
+            margin-top: 1rem;
+            font-weight: 700;
+        }
+
+        /* NEW: Styles for individual background flowers */
+        .background-flower {
+            position: absolute;
+            font-size: 2em; /* Larger flowers in the background */
+            pointer-events: none; /* Allows clicks to pass through */
+            opacity: 0.7; /* Slightly transparent */
+            animation: fall linear infinite; /* Apply the falling animation */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* A subtle glow */
+            color: #ffb6c1; /* A soft pink color */
+            z-index: 1; /* Behind the container */
+        }
+
+        /* Define the falling animation */
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 1.2rem 0.5rem;
+                border-radius: 1rem;
+            }
+            .magic-btn {
+                font-size: 1.1rem;
+                padding: 0.7rem 1.2rem;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+            .msg {
+                font-size: 1rem;
+            }
+            .click-counter {
+                font-size: 0.8rem;
+            }
+            .background-flower {
+                font-size: 1.5em; /* Adjust flower size for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, Kendra! 💖</h1>
+        <div id="message" class="msg">Click the button to begin your journey count mo babeee pag click mo hihihi</div>
+        
+        <button id="magicBtn" class="magic-btn">Click Me</button>
+
+        <div id="clickCounter" class="click-counter">Clicks: 0</div>
+    </div>
+
+    <div id="flowerBackground"></div>
+
+    <script>
+        const messages = [
+            "Click to see the surprise babeeee!",
+            "Click to see the anooo bastaa go lang!",
+            "Are you sure you want to continue babeee?",
+            "Almost there! Click again babeee WHAHAHA.",
+            "Just a few more clicks bebeee huhhu sorry...",
+            "This is getting exciting, right? hala wala na tinamad na ang bebe",
+            "Ready? Click to reveal your surprise! eto na totoo na to",
+        ];
+        let clickCount = 0;
+        const totalFlowersInBackground = 48; // Now referring to the animated background flowers
+        
+        const btn = document.getElementById('magicBtn');
+        const msg = document.getElementById('message');
+        // const flowersDisplay = document.getElementById('flowersDisplay'); // No longer needed for foreground display
+        const clickCounter = document.getElementById('clickCounter');     // Get the new click counter element
+        const flowerBackground = document.getElementById('flowerBackground'); // Get the background container
+
+        // Function to create and animate a single background flower
+        function createBackgroundFlower() {
+            const flower = document.createElement('span');
+            flower.classList.add('background-flower');
+            flower.textContent = '🌸'; // Or other flower emoji: 🌺 🌼 🌻 🌷 🌹 💮
+            
+            // Randomize starting position (left), size, duration, and delay
+            flower.style.left = `${Math.random() * 100}vw`;
+            flower.style.animationDuration = `${Math.random() * 5 + 5}s`; // 5 to 10 seconds
+            flower.style.animationDelay = `${Math.random() * 5}s`; // Up to 5 seconds delay
+            flower.style.fontSize = `${Math.random() * 1.5 + 1}em`; // 1em to 2.5em
+
+            flowerBackground.appendChild(flower);
+
+            // Remove flower after it falls off screen to prevent DOM clutter
+            flower.addEventListener('animationiteration', () => {
+                flower.remove();
+                // Optionally, create a new one to maintain a continuous flow
+                createBackgroundFlower(); 
+            });
+        }
+
+        // Initialize multiple background flowers
+        for (let i = 0; i < totalFlowersInBackground; i++) {
+            createBackgroundFlower();
+        }
+
+        // Function to update the click counter display
+        function updateClickCounter() {
+            clickCounter.textContent = `Clicks: ${clickCount}`;
+        }
+        
+        // Initial display update
+        updateClickCounter();
+
+        btn.addEventListener('click', () => {
+            // Increment the click counter
+            clickCount++;
+            
+            // Update the displays immediately
+            updateClickCounter();
+
+            if (clickCount <= messages.length) {
+                // Update the message if there are still messages to show
+                msg.textContent = messages[clickCount - 1]; // Use clickCount - 1 for array index
+            } 
+            
+            // Check if all steps (clicks) have been completed
+            if (clickCount > messages.length) {
+                // This block runs after all messages have been shown
+                msg.textContent = `Here we go! 💖 (Journey Complete!)`; // Message changed as flowers are now background
+                btn.disabled = true;
+                btn.style.opacity = 0.7;
+                
+                // No need to explicitly display foreground flowers anymore.
+                // The background flowers will continue to animate.
+
+                setTimeout(() => {
+                    window.location.href = "home.html";
+                }, 1200);
+            }
+        });
+    </script>
+</body>
+</html>
